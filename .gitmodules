@@ -1,0 +1,9 @@
+[submodule "proto-order-develiry"]
+	path = proto-order-develiry
+	url = https://github.com/LadeiraGabriel/proto-order-develiry.git
+[submodule "src/shared/providers/gRPC/proto-order-develiry"]
+	path = src/shared/providers/gRPC/proto-order-develiry
+	url = https://github.com/LadeiraGabriel/proto-order-develiry.git
+[submodule "src/shared/infra/proto-order-develiry"]
+	path = src/shared/infra/proto-order-develiry
+	url = https://github.com/LadeiraGabriel/proto-order-develiry.git
