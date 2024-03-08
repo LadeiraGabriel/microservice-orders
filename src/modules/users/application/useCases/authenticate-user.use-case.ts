@@ -1,11 +1,11 @@
-import { Either, failure, success } from 'src/shared/core/errors/either';
+import { Either, failure, success } from '@shared/core/errors/either';
 import { HashProvider } from '../providers/hash-provider.interface';
 import { UserRepositoryInterface } from '../repositories/user-repository.interface';
 import {
   ResourceConflictError,
   ResourceNotFoundError,
-} from 'src/shared/core/errors/generics';
-import { AuthProvider } from '../../../auth/application/providers/auth-provider.interface';
+} from '@shared/core/errors/generics';
+import { AuthProvider } from '@modules/auth/application/providers/auth-provider.interface';
 
 type Response = Either<ResourceNotFoundError | ResourceConflictError, string>;
 

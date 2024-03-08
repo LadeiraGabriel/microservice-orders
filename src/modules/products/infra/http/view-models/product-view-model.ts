@@ -1,4 +1,4 @@
-import { Product } from 'src/modules/products/application/entities/product.entity';
+import { Product } from '@modules/products/application/entities/product.entity';
 
 export class ProductViewModel {
   static toHttp(product: Product) {

@@ -1,9 +1,9 @@
-import { Injectable, OnModuleDestroy, OnModuleInit } from '@nestjs/common';
-import { Client, ClientRMQ, Transport } from '@nestjs/microservices';
 import {
   MessagerDeliveryProviderInterface,
   SendOrderToDelivery,
-} from 'src/modules/orders/application/providers/messager-delivery-provider.interface';
+} from '@modules/orders/application/providers/messager-delivery-provider.interface';
+import { Client, ClientRMQ, Transport } from '@nestjs/microservices';
+import { Injectable, OnModuleDestroy, OnModuleInit } from '@nestjs/common';
 
 @Injectable()
 export class DeliveryRabbitMQProvider

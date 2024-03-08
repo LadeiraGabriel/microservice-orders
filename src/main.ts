@@ -12,7 +12,7 @@ async function bootstrap() {
     options: {
       package: 'orders',
       protoPath: join(__dirname, '/shared/infra/protos/order.proto'),
-      url: 'localhost:5050',
+      url: process.env.GRPC_HOST,
     },
   });
   app.startAllMicroservices();

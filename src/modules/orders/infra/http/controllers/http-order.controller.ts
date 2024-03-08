@@ -1,13 +1,13 @@
+import { GetStatusOrderUseCase } from '@modules/orders/application/useCases/get-status-order.use-case';
+import { CreateOrderUseCase } from '@modules/orders/application/useCases/create-order.use-case';
+import { Role, Roles } from '@shared/infra/http/decorator/roles.decorator';
 import { Body, Controller, Get, Param, Post, Req, Res } from '@nestjs/common';
 import { CreateOrderDto } from '../dtos/create-order.dto';
-import { Request, Response } from 'express';
-import { CreateOrderUseCase } from 'src/modules/orders/application/useCases/create-order.use-case';
 import {
   ResourceConflictError,
   ResourceNotFoundError,
-} from 'src/shared/core/errors/generics';
-import { Role, Roles } from 'src/shared/infra/http/decorator/roles.decorator';
-import { GetStatusOrderUseCase } from 'src/modules/orders/application/useCases/get-status-order.use-case';
+} from '@shared/core/errors/generics';
+import { Request, Response } from 'express';
 import {
   ApiConflictResponse,
   ApiNotFoundResponse,

@@ -1,8 +1,8 @@
-import { Either, failure, success } from 'src/shared/core/errors/either';
+import { Either, failure, success } from '@shared/core/errors/either';
 import {
   ResourceConflictError,
   ResourceNotFoundError,
-} from 'src/shared/core/errors/generics';
+} from '@shared/core/errors/generics';
 import { UserRepositoryInterface } from '../repositories/user-repository.interface';
 import { Address } from '../entities/address.entity';
 import { AddressRepositoryInterface } from '../repositories/address-repository.interface';

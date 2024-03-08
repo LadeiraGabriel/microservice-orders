@@ -1,5 +1,5 @@
-import { Either, failure, success } from 'src/shared/core/errors/either';
-import { ResourceNotFoundError } from 'src/shared/core/errors/generics';
+import { Either, failure, success } from '@shared/core/errors/either';
+import { ResourceNotFoundError } from '@shared/core/errors/generics';
 import { OrderRepositoryInterface } from '../repositories/order-repository.interface';
 
 type OrderDate = {

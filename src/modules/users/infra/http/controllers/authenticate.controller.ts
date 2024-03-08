@@ -1,8 +1,8 @@
 import { Body, Controller, Post, Res } from '@nestjs/common';
 import { Response } from 'express';
-import { AuthenticateUserUseCase } from 'src/modules/users/application/useCases/authenticate-user.use-case';
+import { AuthenticateUserUseCase } from '@modules/users/application/useCases/authenticate-user.use-case';
 import { AuthenticateHttpBodyDTO } from '../dto/authenticate.dto';
-import { UnauthorizedError } from 'src/shared/core/errors/generics';
+import { UnauthorizedError } from '@shared/core/errors/generics';
 import { ApiTags } from '@nestjs/swagger';
 
 @ApiTags('Users')

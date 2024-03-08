@@ -34,4 +34,13 @@ export class AddressPrismaRepository implements AddressRepositoryInterface {
 
     return rawAddress ? PrismaAddressMapper.toDomain(rawAddress) : undefined;
   }
+  async findMany(options: FindAddressOptions): Promise<Address[]> {
+    const { userId } = options.filters;
+    const rawAddress = await this.prisma.address.findMany({
+      where: {
+        userId,
+      },
+    });
+    return rawAddress ? rawAddress.map(PrismaAddressMapper.toDomain) : [];
+  }
 }

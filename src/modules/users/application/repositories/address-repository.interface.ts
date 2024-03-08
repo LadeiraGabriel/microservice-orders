@@ -13,4 +13,5 @@ export type FindAddressOptions = {
 export abstract class AddressRepositoryInterface {
   abstract save(address: Address): Promise<void>;
   abstract find(options: FindAddressOptions): Promise<Address | undefined>;
+  abstract findMany(options: FindAddressOptions): Promise<Address[]>;
 }

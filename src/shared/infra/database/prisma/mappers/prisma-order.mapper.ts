@@ -1,5 +1,5 @@
 import { Order as rawOrder } from '@prisma/client';
-import { Order } from 'src/modules/orders/application/entities/order.entity';
+import { Order } from '@modules/orders/application/entities/order.entity';
 
 type Status = 'finish' | 'onTheWay' | null;
 

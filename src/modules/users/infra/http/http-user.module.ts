@@ -1,21 +1,22 @@
-import { Module } from '@nestjs/common';
-import { DatabaseModule } from 'src/shared/infra/database/database.module';
-import { ProviderModule } from 'src/shared/providers/provider.module';
-import { AuthModule } from 'src/modules/auth/auth.module';
-import { AdminUserController } from './controllers/admin-user.controller';
-import { UserController } from './controllers/user.controller';
+import { AuthModule } from '@modules/auth/auth.module';
+import { AuthProvider } from '@modules/auth/application/providers/auth-provider.interface';
+import { AuthenticateUserUseCase } from '@modules/users/application/useCases/authenticate-user.use-case';
+import { UserRepositoryInterface } from '@modules/users/application/repositories/user-repository.interface';
+import { HashProvider } from '@modules/users/application/providers/hash-provider.interface';
+import { UpdateRoleUserUseCase } from '@modules/users/application/useCases/update-role-user.use-case';
+import { CreateAddressUseCase } from '@modules/users/application/useCases/create-address.use-case';
+import { CreateUserUseCase } from '@modules/users/application/useCases/create-user.use-case';
+import { AddressRepositoryInterface } from '@modules/users/application/repositories/address-repository.interface';
+import { ProviderModule } from '@shared/providers/provider.module';
+import { DatabaseModule } from '@shared/infra/database/database.module';
+import { AuthGuard } from '@shared/infra/http/middleware/auth.guard';
 import { AddressController } from './controllers/address.controller';
-import { AuthenticateUserUseCase } from '../../application/useCases/authenticate-user.use-case';
-import { UserRepositoryInterface } from '../../application/repositories/user-repository.interface';
-import { HashProvider } from '../../application/providers/hash-provider.interface';
-import { AuthProvider } from 'src/modules/auth/application/providers/auth-provider.interface';
-import { CreateAddressUseCase } from '../../application/useCases/create-address.use-case';
-import { AddressRepositoryInterface } from '../../application/repositories/address-repository.interface';
-import { CreateUserUseCase } from '../../application/useCases/create-user.use-case';
-import { UpdateRoleUserUseCase } from '../../application/useCases/update-role-user.use-case';
+import { UserController } from './controllers/user.controller';
 import { AuthenticateController } from './controllers/authenticate.controller';
+import { AdminUserController } from './controllers/admin-user.controller';
 import { APP_GUARD } from '@nestjs/core';
-import { AuthGuard } from 'src/shared/infra/http/middleware/auth.guard';
+import { Module } from '@nestjs/common';
+import { ListAddressByUserUseCase } from '@modules/users/application/useCases/list-address-by-user';
 
 @Module({
   imports: [DatabaseModule, ProviderModule, AuthModule],
@@ -53,7 +54,13 @@ import { AuthGuard } from 'src/shared/infra/http/middleware/auth.guard';
       },
       inject: [UserRepositoryInterface, AddressRepositoryInterface],
     },
-
+    {
+      provide: ListAddressByUserUseCase,
+      useFactory: (addreassRepository: AddressRepositoryInterface) => {
+        return new ListAddressByUserUseCase(addreassRepository);
+      },
+      inject: [AddressRepositoryInterface],
+    },
     {
       provide: CreateUserUseCase,
       useFactory: (

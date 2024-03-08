@@ -1,5 +1,5 @@
 import { Address as rawAddress } from '@prisma/client';
-import { Address } from 'src/modules/users/application/entities/address.entity';
+import { Address } from '@modules/users/application/entities/address.entity';
 
 export class PrismaAddressMapper {
   static toPrisma(address: Address) {

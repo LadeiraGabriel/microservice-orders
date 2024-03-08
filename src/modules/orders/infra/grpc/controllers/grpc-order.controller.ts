@@ -1,8 +1,8 @@
-import { Controller } from '@nestjs/common';
+import { UpdateStatusOrderToOnWayUseCase } from '@modules/orders/application/useCases/update-status-order-to-on-the-way.use-case';
+import { UpdateStatusOrderToFinishUseCase } from '@modules/orders/application/useCases/update-status-order-to-finish.use-case';
 import { GrpcMethod, Payload } from '@nestjs/microservices';
 import { StatusOrderDto } from '../dto/status-order.dto';
-import { UpdateStatusOrderToOnWayUseCase } from 'src/modules/orders/application/useCases/update-status-order-to-on-the-way.use-case';
-import { UpdateStatusOrderToFinishUseCase } from 'src/modules/orders/application/useCases/update-status-order-to-finish.use-case';
+import { Controller } from '@nestjs/common';
 
 @Controller()
 export class GRpcOrderController {

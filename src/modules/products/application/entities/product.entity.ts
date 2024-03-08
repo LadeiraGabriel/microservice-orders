@@ -1,5 +1,5 @@
+import { Optional } from '@helpers/optional';
 import { randomUUID } from 'crypto';
-import { Optional } from 'src/helpers/optional';
 
 type ProductProps = {
   name: string;

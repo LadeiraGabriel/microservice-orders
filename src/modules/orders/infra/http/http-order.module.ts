@@ -1,16 +1,16 @@
-import { Module } from '@nestjs/common';
-import { DatabaseModule } from 'src/shared/infra/database/database.module';
-import { HttpOrderController } from './controllers/http-order.controller';
-import { ProviderModule } from 'src/shared/providers/provider.module';
-import { AuthModule } from 'src/modules/auth/auth.module';
+import { AuthModule } from '@modules/auth/auth.module';
 import { CreateOrderUseCase } from '../../application/useCases/create-order.use-case';
 import { OrderRepositoryInterface } from '../../application/repositories/order-repository.interface';
-import { ProductRepositoryInterface } from 'src/modules/products/application/repositories/product-repository.interface';
-import { APP_GUARD } from '@nestjs/core';
-import { AuthGuard } from 'src/shared/infra/http/middleware/auth.guard';
-import { AddressRepositoryInterface } from 'src/modules/users/application/repositories/address-repository.interface';
+import { ProductRepositoryInterface } from '@modules/products/application/repositories/product-repository.interface';
+import { AuthGuard } from '@shared/infra/http/middleware/auth.guard';
+import { AddressRepositoryInterface } from '@modules/users/application/repositories/address-repository.interface';
 import { MessagerDeliveryProviderInterface } from '../../application/providers/messager-delivery-provider.interface';
 import { GetStatusOrderUseCase } from '../../application/useCases/get-status-order.use-case';
+import { ProviderModule } from '@shared/providers/provider.module';
+import { HttpOrderController } from './controllers/http-order.controller';
+import { DatabaseModule } from '@shared/infra/database/database.module';
+import { APP_GUARD } from '@nestjs/core';
+import { Module } from '@nestjs/common';
 
 @Module({
   imports: [DatabaseModule, ProviderModule, AuthModule],

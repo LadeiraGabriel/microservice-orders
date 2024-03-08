@@ -1,13 +1,13 @@
-import { ProductRepositoryInterface } from 'src/modules/products/application/repositories/product-repository.interface';
-import { Order } from '../entities/order.entity';
+import { ProductRepositoryInterface } from '@modules/products/application/repositories/product-repository.interface';
+import { AddressRepositoryInterface } from '@modules/users/application/repositories/address-repository.interface';
+import { MessagerDeliveryProviderInterface } from '../providers/messager-delivery-provider.interface';
 import { OrderRepositoryInterface } from '../repositories/order-repository.interface';
-import { Either, failure, success } from 'src/shared/core/errors/either';
+import { Either, failure, success } from '@shared/core/errors/either';
+import { Order } from '../entities/order.entity';
 import {
   ResourceConflictError,
   ResourceNotFoundError,
-} from 'src/shared/core/errors/generics';
-import { AddressRepositoryInterface } from 'src/modules/users/application/repositories/address-repository.interface';
-import { MessagerDeliveryProviderInterface } from '../providers/messager-delivery-provider.interface';
+} from '@shared/core/errors/generics';
 
 type CreateOrderData = {
   userId: string;

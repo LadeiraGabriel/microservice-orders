@@ -1,8 +1,8 @@
+import { UpdateRoleUserUseCase } from '@modules/users/application/useCases/update-role-user.use-case';
+import { Role, Roles } from '@shared/infra/http/decorator/roles.decorator';
 import { Body, Controller, Patch, Res } from '@nestjs/common';
 import { Response } from 'express';
 import { UpdateRoleUserDTO } from '../dto/update-role-user.dto';
-import { UpdateRoleUserUseCase } from 'src/modules/users/application/useCases/update-role-user.use-case';
-import { Role, Roles } from 'src/shared/infra/http/decorator/roles.decorator';
 import { ApiSecurity, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('Users')

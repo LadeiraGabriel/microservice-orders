@@ -1,8 +1,8 @@
+import { CreateUserUseCase } from '@modules/users/application/useCases/create-user.use-case';
+import { ResourceConflictError } from '@shared/core/errors/generics';
 import { Body, Controller, Post, Res } from '@nestjs/common';
 import { Response } from 'express';
-import { CreateUserUseCase } from 'src/modules/users/application/useCases/create-user.use-case';
 import { CreateUsertDTO } from '../dto/create-user.dto';
-import { ResourceConflictError } from 'src/shared/core/errors/generics';
 import { ApiTags } from '@nestjs/swagger';
 
 @ApiTags('Users')

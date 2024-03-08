@@ -1,8 +1,8 @@
 import {
   RoleType,
   User,
-} from 'src/modules/users/application/entities/user.entity';
-import { UserRepositoryInterface } from 'src/modules/users/application/repositories/user-repository.interface';
+} from '@modules/users/application/entities/user.entity';
+import { UserRepositoryInterface } from '@modules/users/application/repositories/user-repository.interface';
 import { PrismaService } from '../prisma.service';
 import { PrismaUserMapper } from '../mappers/prisma-user.mapper';
 import { Injectable } from '@nestjs/common';

@@ -1,5 +1,5 @@
-import { Either, failure, success } from 'src/shared/core/errors/either';
-import { ResourceConflictError } from 'src/shared/core/errors/generics';
+import { Either, failure, success } from '@shared/core/errors/either';
+import { ResourceConflictError } from '@shared/core/errors/generics';
 import { UserRepositoryInterface } from '../repositories/user-repository.interface';
 import { RoleType } from '../entities/user.entity';
 

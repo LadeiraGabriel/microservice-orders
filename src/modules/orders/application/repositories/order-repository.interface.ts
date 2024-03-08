@@ -12,5 +12,4 @@ export abstract class OrderRepositoryInterface {
   abstract create(order: Order): Promise<void>;
   abstract save(order: Order): Promise<void>;
   abstract find(options: FindOrderOptions): Promise<Order | undefined>;
-  //abstract findMany(options: FindOrderOptions): Promise<Order[] | undefined>;
 }

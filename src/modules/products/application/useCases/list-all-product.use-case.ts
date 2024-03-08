@@ -1,4 +1,4 @@
-import { Either, success } from 'src/shared/core/errors/either';
+import { Either, success } from '@shared/core/errors/either';
 import { ProductRepositoryInterface } from '../repositories/product-repository.interface';
 import { Product } from '../entities/product.entity';
 

@@ -1,5 +1,5 @@
-import { Either, failure, success } from 'src/shared/core/errors/either';
-import { ResourceConflictError } from 'src/shared/core/errors/generics';
+import { Either, failure, success } from '@shared/core/errors/either';
+import { ResourceConflictError } from '@shared/core/errors/generics';
 import { User } from '../entities/user.entity';
 import { UserRepositoryInterface } from '../repositories/user-repository.interface';
 import { HashProvider } from '../providers/hash-provider.interface';

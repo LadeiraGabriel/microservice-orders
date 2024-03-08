@@ -1,5 +1,5 @@
 import { Controller, Get } from '@nestjs/common';
-import { ListAllProductUseCase } from 'src/modules/products/application/useCases/list-all-product.use-case';
+import { ListAllProductUseCase } from '@modules/products/application/useCases/list-all-product.use-case';
 import { ApiTags } from '@nestjs/swagger';
 import { ProductViewModel } from '../view-models/product-view-model';
 

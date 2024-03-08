@@ -1,9 +1,9 @@
-import { JwtPayload, sign, decode } from 'jsonwebtoken';
 import {
   AuthProvider,
   AuthorizationProps,
-} from 'src/modules/auth/application/providers/auth-provider.interface';
-import authConfig from 'src/config/auth';
+} from '@modules/auth/application/providers/auth-provider.interface';
+import authConfig from '@config/auth';
+import { JwtPayload, sign, decode } from 'jsonwebtoken';
 import { Injectable } from '@nestjs/common';
 
 interface IPayload extends AuthorizationProps, JwtPayload {}

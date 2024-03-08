@@ -1,4 +1,4 @@
-import { HashProvider } from 'src/modules/users/application/providers/hash-provider.interface';
+import { HashProvider } from '@modules/users/application/providers/hash-provider.interface';
 import { hash, compare } from 'bcrypt';
 
 export class BcryptHashProvider implements HashProvider {
