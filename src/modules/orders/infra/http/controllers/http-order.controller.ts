@@ -68,7 +68,6 @@ export class HttpOrderController {
 
   @ApiResponse({
     status: 200,
-    description: 'The order has been successfully created.',
   })
   @Get()
   async listOrders(@Req() req: Request, @Res() res: Response) {
