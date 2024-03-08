@@ -22,13 +22,14 @@ export class UpdateStatusOrderToOnWayUseCase {
     });
     if (!order) return failure(new ResourceNotFoundError('Order not found'));
 
-    if (order.status)
+    if (order.status !== 'inPreparation')
       return failure(
         new ResourceConflictError('this order can not be started'),
       );
 
-    order.status = 'on the way';
+    order.status = 'onTheWay';
     order.updateAt = new Date();
+    console.log(order.status);
     await this.orderRepository.save(order);
 
     return success(null);

@@ -1,7 +1,7 @@
 import { Optional } from '@helpers/optional';
 import { randomUUID } from 'crypto';
 
-type StatusDelivery = 'finish' | 'on the way';
+export type Status = 'finish' | 'onTheWay' | 'inPreparation';
 
 type OrderProps = {
   userId: string;
@@ -11,7 +11,7 @@ type OrderProps = {
   totalPrice: number;
   createdAt: Date;
   updateAt: Date;
-  status: StatusDelivery | null;
+  status: Status;
 };
 
 export class Order {
@@ -19,14 +19,14 @@ export class Order {
   private props: OrderProps;
 
   constructor(
-    props: Optional<OrderProps, 'createdAt' | 'status' | 'updateAt'>,
+    props: Optional<OrderProps, 'status' | 'createdAt' | 'updateAt'>,
     id?: string,
   ) {
     this.props = {
       ...props,
+      status: props.status ?? 'inPreparation',
       createdAt: props.createdAt ?? new Date(),
       updateAt: props.updateAt ?? new Date(),
-      status: props.status ?? null,
     };
     this._id = id ?? randomUUID();
   }
@@ -63,10 +63,10 @@ export class Order {
     this.props.updateAt = updateAt;
   }
 
-  get status(): StatusDelivery | null {
+  get status(): Status {
     return this.props.status;
   }
-  set status(status: StatusDelivery) {
+  set status(status: Status) {
     this.props.status = status;
   }
 }

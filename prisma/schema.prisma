@@ -46,8 +46,9 @@ model Product {
 }
 
 enum Status {
-  finish
+  inPreparation
   onTheWay
+  finish
 }
 
 model Order {
@@ -55,7 +56,7 @@ model Order {
   quantity   Int
   totalPrice Float
   createdAt  DateTime
-  status     Status?
+  status     Status
   user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId     String
   product    Product  @relation(fields: [productId], references: [id], onDelete: Cascade)

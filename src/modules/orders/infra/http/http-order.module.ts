@@ -5,12 +5,12 @@ import { ProductRepositoryInterface } from '@modules/products/application/reposi
 import { AuthGuard } from '@shared/infra/http/middleware/auth.guard';
 import { AddressRepositoryInterface } from '@modules/users/application/repositories/address-repository.interface';
 import { MessagerDeliveryProviderInterface } from '../../application/providers/messager-delivery-provider.interface';
-import { GetStatusOrderUseCase } from '../../application/useCases/get-status-order.use-case';
 import { ProviderModule } from '@shared/providers/provider.module';
 import { HttpOrderController } from './controllers/http-order.controller';
 import { DatabaseModule } from '@shared/infra/database/database.module';
 import { APP_GUARD } from '@nestjs/core';
 import { Module } from '@nestjs/common';
+import { ListOrdersByUserUseCase } from '@modules/orders/application/useCases/list-orders-by-user.use-case';
 
 @Module({
   imports: [DatabaseModule, ProviderModule, AuthModule],
@@ -39,15 +39,15 @@ import { Module } from '@nestjs/common';
         MessagerDeliveryProviderInterface,
       ],
     },
-
     {
-      provide: GetStatusOrderUseCase,
+      provide: ListOrdersByUserUseCase,
 
       useFactory: (orderRepository: OrderRepositoryInterface) => {
-        return new GetStatusOrderUseCase(orderRepository);
+        return new ListOrdersByUserUseCase(orderRepository);
       },
       inject: [OrderRepositoryInterface],
     },
+
     {
       provide: APP_GUARD,
       useClass: AuthGuard,

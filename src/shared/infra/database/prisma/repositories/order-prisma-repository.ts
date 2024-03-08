@@ -28,6 +28,16 @@ export class OrderPrismaRepository implements OrderRepositoryInterface {
     return order ? PrismaOrderMapper.toDomain(order) : undefined;
   }
 
+  async findMany({ filters }: FindOrderOptions): Promise<Order[]> {
+    const { userId } = filters;
+
+    const orders = await this.prisma.order.findMany({
+      where: {
+        userId,
+      },
+    });
+    return orders.map(PrismaOrderMapper.toDomain);
+  }
   async save(order: Order): Promise<void> {
     const rawOrder = PrismaOrderMapper.toPrisma(order);
     await this.prisma.order.update({

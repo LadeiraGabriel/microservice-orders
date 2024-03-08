@@ -1,8 +1,6 @@
 import { Order as rawOrder } from '@prisma/client';
 import { Order } from '@modules/orders/application/entities/order.entity';
 
-type Status = 'finish' | 'onTheWay' | null;
-
 export class PrismaOrderMapper {
   static toPrisma(order: Order) {
     return {
@@ -13,8 +11,7 @@ export class PrismaOrderMapper {
       addressId: order.addressId,
       totalPrice: order.totalPrice,
       createdAt: order.createdAt,
-      status:
-        order.status === 'on the way' ? 'onTheWay' : (order.status as Status),
+      status: order.status,
     };
   }
 
@@ -27,7 +24,7 @@ export class PrismaOrderMapper {
         quantity: raw.quantity,
         totalPrice: raw.totalPrice,
         createdAt: raw.createdAt,
-        status: raw.status === 'onTheWay' ? 'on the way' : raw.status,
+        status: raw.status,
       },
       raw.id,
     );

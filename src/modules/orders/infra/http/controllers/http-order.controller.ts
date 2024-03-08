@@ -1,7 +1,6 @@
-import { GetStatusOrderUseCase } from '@modules/orders/application/useCases/get-status-order.use-case';
 import { CreateOrderUseCase } from '@modules/orders/application/useCases/create-order.use-case';
 import { Role, Roles } from '@shared/infra/http/decorator/roles.decorator';
-import { Body, Controller, Get, Param, Post, Req, Res } from '@nestjs/common';
+import { Body, Controller, Get, Post, Req, Res } from '@nestjs/common';
 import { CreateOrderDto } from '../dtos/create-order.dto';
 import {
   ResourceConflictError,
@@ -15,6 +14,8 @@ import {
   ApiSecurity,
   ApiTags,
 } from '@nestjs/swagger';
+import { ListOrdersByUserUseCase } from '@modules/orders/application/useCases/list-orders-by-user.use-case';
+import { OrderViewModel } from '../view-models/order.view-model';
 
 @ApiTags('Orders')
 @Controller('order')
@@ -23,7 +24,7 @@ import {
 export class HttpOrderController {
   constructor(
     private createOrderUseCase: CreateOrderUseCase,
-    private getStatusOrderUseCase: GetStatusOrderUseCase,
+    private listOrderByUserUseCase: ListOrdersByUserUseCase,
   ) {}
   @Post()
   @ApiResponse({
@@ -69,27 +70,15 @@ export class HttpOrderController {
     status: 200,
     description: 'The order has been successfully created.',
   })
-  @ApiResponse({ status: 404, description: 'Not Found.' })
-  @Get('/:id/status')
-  async getOrder(@Param('id') orderId: string, @Res() res: Response) {
-    const responseUseCase = await this.getStatusOrderUseCase.execute({
-      orderId,
+  @Get()
+  async listOrders(@Req() req: Request, @Res() res: Response) {
+    const { id } = req.user;
+    const responseUseCase = await this.listOrderByUserUseCase.execute({
+      userId: id,
     });
-    if (responseUseCase.isFailure()) {
-      const error = responseUseCase.value;
-      const message = error.message;
-
-      if (error.constructor === ResourceNotFoundError) {
-        res.status(404).json({
-          status: 'error',
-          code: 'code.not_found',
-          message: message,
-        });
-      }
-    }
 
     res.json({
-      statusOrder: responseUseCase.value,
+      orders: responseUseCase.value?.map(OrderViewModel.toHttp),
     });
   }
 }

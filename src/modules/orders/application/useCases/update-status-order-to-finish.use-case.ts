@@ -22,7 +22,7 @@ export class UpdateStatusOrderToFinishUseCase {
     });
     if (!order) return failure(new ResourceNotFoundError('Order not found'));
 
-    if (!order.status || order.status === 'finish')
+    if (order.status !== 'onTheWay')
       return failure(
         new ResourceConflictError('this order can not be finished'),
       );
