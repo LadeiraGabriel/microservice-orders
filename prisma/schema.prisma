@@ -31,7 +31,7 @@ model Address {
   number    Int
   reference String?
   userId    String
-  user      User    @relation(fields: [userId], references: [id])
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
   Order     Order[]
 }
 
@@ -56,10 +56,10 @@ model Order {
   totalPrice Float
   createdAt  DateTime
   status     Status?
-  user       User     @relation(fields: [userId], references: [id])
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId     String
-  product    Product  @relation(fields: [productId], references: [id])
+  product    Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
   productId  String
   addressId  String
-  address    Address  @relation(fields: [addressId], references: [id])
+  address    Address  @relation(fields: [addressId], references: [id], onDelete: Cascade)
 }

@@ -22,7 +22,7 @@ export class AuthenticateController {
       password,
     });
     if (responseUseCase.isSuccess()) {
-      return res.status(200).json(responseUseCase.value);
+      return res.status(200).json({ token: responseUseCase.value });
     }
     const error = responseUseCase.value;
     const message = error.message;

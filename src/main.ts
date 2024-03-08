@@ -11,10 +11,7 @@ async function bootstrap() {
     transport: Transport.GRPC,
     options: {
       package: 'orders',
-      protoPath: join(
-        __dirname,
-        '/shared/infra/proto-order-delivery/protos/order.proto',
-      ),
+      protoPath: join(__dirname, '/shared/infra/protos/order.proto'),
       url: 'localhost:5050',
     },
   });
